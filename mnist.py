@@ -17,8 +17,9 @@ y_test = mnist.test.labels.astype("int")
 
 # layer 정보
 n_inputs = X_train.shape[1]  # MNIST
-n_hidden1 = 150
-n_hidden2 = 150
+n_hidden1 = 196
+n_hidden2 = 196
+n_hidden3 = 196
 n_outputs = 10
 
 
@@ -45,7 +46,12 @@ with tf.name_scope("dnn"):
     hidden2 = tf.layers.dense(inputs=hidden1, units=n_hidden2,
                               activation=tf.nn.relu,
                               name = "hidden2")
-    logits = tf.layers.dense(inputs= hidden2,units=n_outputs, name="logits")
+
+    hidden3 = tf.layers.dense(inputs=hidden2, units=n_hidden3,
+                              activation=tf.nn.relu,
+                              name = "hidden3")
+
+    logits = tf.layers.dense(inputs= hidden3,units=n_outputs, name="logits")
 
 
 
